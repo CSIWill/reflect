@@ -6,7 +6,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "journal_table")
-data class reflect_entry(
+data class my_entry(
     @PrimaryKey val id: Int,
 //    Time of entry
     @NonNull @ColumnInfo(name = "journal_time") val journal_time: Int,
