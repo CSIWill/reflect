@@ -11,6 +11,7 @@ import android.os.Bundle
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import kotlinx.android.synthetic.main.activity_main.*
+import android.R
 
 class MainActivity : AppCompatActivity() {
 
