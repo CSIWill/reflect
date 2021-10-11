@@ -15,4 +15,9 @@ interface my_dao {
     fun getEntries(): Flow<List<my_entry>>
 //    List Entry From date
 //    @Query("SELECT journal_time FROM journal_table")
+
+    @Query("SELECT EXISTS(SELECT journal_entry FROM journal_table WHERE journal_time = :inputTime)")
+    fun getTimeEntry() {
+
+    }
 }
