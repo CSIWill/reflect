@@ -43,7 +43,6 @@ interface my_dao {
                                                 //// doesn't return column data for time, mood, and entry
 //    @Query("SELECT journal_time FROM journal_table ORDER BY DESC")
 //    fun getDate(): Flow<List<my_entry>>
-//
 
 }
 
