@@ -16,8 +16,13 @@ interface my_dao {
 //    List Entry From date
 //    @Query("SELECT journal_time FROM journal_table")
 
-    @Query("SELECT EXISTS(SELECT journal_entry FROM journal_table WHERE journal_time = :inputTime)")
+    @Query("SELECT EXISTS(SELECT journal_entry FROM journal_table WHERE journal_time = journal_time)")
     fun getTimeEntry() {
+
+    }
+
+    @Query("SELECT EXISTS(SELECT journal_entry FROM journal_table WHERE journal_mood = journal_mood)")
+    fun getMoodEntry() {
 
     }
 }
