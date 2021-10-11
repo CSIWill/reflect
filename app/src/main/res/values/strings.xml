@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">reflect</string>
+
+    <string name="previousEntryButtonText">Previous Entry</string>
+    <string name="nextEntryButtonText">Next Entry</string>
+
+    <string name="entryDate1"> October 22nd 2020 </string>
+    <string name="entryText1"> This is an example of a diary entry on the Reflect app. You can journal all of your thoughts in this text box.  </string>
+
+
+    <string name="entryDate2"> October 29nd 2020 </string>
+    <string name="entryText2"> This is a secondary example of a diary entry! </string>
+
+    <string name="entryDate3"> October 30nd 2020 </string>
+    <string name="entryText3"> This is a tertiary test example.  </string>
 </resources>
