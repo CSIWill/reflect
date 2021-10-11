@@ -17,4 +17,3 @@ data class my_entry(
 //    Mood Score
     @NonNull @ColumnInfo(name = "journal_mood") val journal_mood: Float
 )
-

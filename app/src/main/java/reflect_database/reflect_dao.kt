@@ -1,13 +1,13 @@
 package reflect_database
 
+import android.app.Activity
 import android.text.Selection
 import androidx.recyclerview.widget.SortedList
-import androidx.room.Dao
-import androidx.room.Index
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import java.sql.Time
+import kotlin.time.measureTime
 
 @Dao
 interface my_dao {
@@ -21,9 +21,8 @@ interface my_dao {
 //    List entry from date in descending order
 //    @Query("SELECT journal_time FROM journal_table ORDER BY 'DESC'")
 //    fun getDate(): Flow<List<my_entry>>
-
-    //sort entries by date
-   @Query("SELECT journal_time FROM journal_table ORDER BY 'DESC'")
-   fun <my_entry> SortedList():Int
-
+        fun hi(my_entry: my_entry) {
+            val sortedSetOf = sortedSetOf(Int)
+        }
 }
+
