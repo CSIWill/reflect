@@ -3,7 +3,9 @@ package reflect_database
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Insert
 import androidx.room.PrimaryKey
+
 
 @Entity(tableName = "journal_table")
 data class my_entry(
