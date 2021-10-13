@@ -1,3 +1,5 @@
+package com.example.reflect
+
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -42,15 +44,15 @@ class Notifications : AppCompatActivity() {
 
     private fun createNotificationChannel () {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = "Journal Notifications"
-            val descriptionText = "Notifications to journal"
+            val name = "Journal com.example.reflect.Notifications"
+            val descriptionText = "com.example.reflect.Notifications to journal"
             val importance = NotificationManager.IMPORTANCE_DEFAULT
             val channel = NotificationChannel(CHANNEL_ID,name,importance).apply { description=descriptionText }
             val notificationManager:NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
 
-            val name1="Mood Tracker Notifications"
-            val descriptionText1 = "Notifications to track mood"
+            val name1="Mood Tracker com.example.reflect.Notifications"
+            val descriptionText1 = "com.example.reflect.Notifications to track mood"
             val importance1 = NotificationManager.IMPORTANCE_DEFAULT
             val channel1 = NotificationChannel(CHANNEL_ID2,name1, importance1).apply {description = descriptionText1}
             val notificationManager1:NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
