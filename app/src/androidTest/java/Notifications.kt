@@ -1,4 +1,3 @@
-import android.app.Notification.VISIBILITY_PRIVATE
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -13,7 +12,7 @@ import androidx.core.app.NotificationManagerCompat
 import kotlinx.android.synthetic.main.activity_main.*
 import android.R
 
-class MainActivity : AppCompatActivity() {
+class Notifications : AppCompatActivity() {
 
     private val CHANNEL_ID = "example 1"
     private val CHANNEL_ID2 = "example 2"
@@ -62,7 +61,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun sendNotification(){
 
-        val intent = Intent(this, MainActivity::class.java).apply { flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_NEW_TASK }
+        val intent = Intent(this, Notifications::class.java).apply { flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_NEW_TASK }
         val pendingIntent = PendingIntent.getActivity(this,0,intent, 0)
 
         val bitmap = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.journalicon)
@@ -87,7 +86,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun sendNotification1(){
 
-        val intent = Intent(this, MainActivity::class.java).apply { flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_NEW_TASK }
+        val intent = Intent(this, Notifications::class.java).apply { flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_NEW_TASK }
         val pendingIntent = PendingIntent.getActivity(this,0,intent, 0)
 
         val bitmap = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.journalicon)
