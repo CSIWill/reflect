@@ -15,5 +15,5 @@ data class my_entry(
 //    Entry
     @NonNull @ColumnInfo(name = "journal_entry") val journal_entry: String,
 //    Mood Score
-    @NonNull @ColumnInfo(name = "journal_mood") val journal_mood: Float
+    @NonNull @ColumnInfo(name = "journal_mood") val journal_mood: Int
 )
