@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
             mAlertDialog.setPositiveButton("Submit"){dialog, id->
 
-                Toast.makeText(this@MainActivity, "YES", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, "Submitted :D", Toast.LENGTH_SHORT).show() //action After submitted
             }
 
             mAlertDialog.setNegativeButton("Go Back"){dialog, id->
