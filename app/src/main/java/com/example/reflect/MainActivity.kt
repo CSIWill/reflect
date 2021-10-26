@@ -19,13 +19,7 @@ class MainActivity : AppCompatActivity() {
        val showButton = findViewById<Button>(R.id.showInput)
        val editText = findViewById<EditText>(R.id.editText)
 
-        showButton.setOnClickListener{
 
-            val text = editText.text
-
-            Toast.makeText(this, text, Toast.LENGTH_LONG).show()
-
-        }
 
 
 //ALERT BUTTON
@@ -34,12 +28,17 @@ class MainActivity : AppCompatActivity() {
         showInput.setOnClickListener {
             val mAlertDialog = AlertDialog.Builder(this@MainActivity)
             mAlertDialog.setTitle("PLEASE REMEMBER") //alert dialog title
-            mAlertDialog.setMessage("You will not be able to edit your Journal Entry After you hit Submit")
+            mAlertDialog.setMessage("You Will Not Be Able To Edit Your Journal Entry After You Hit Submit")
             mAlertDialog.setIcon(R.mipmap.ic_launcher);
 
             mAlertDialog.setPositiveButton("Submit"){dialog, id->
 
                 Toast.makeText(this@MainActivity, "Submitted :D", Toast.LENGTH_SHORT).show() //action After submitted
+
+
+                val text = editText.text // TEXT - THIS NEEDS TO BE ADDED TO THE DATABASE
+
+                Toast.makeText(this, text, Toast.LENGTH_LONG).show() // Shouts text - Can remove when database works
             }
 
             mAlertDialog.setNegativeButton("Go Back"){dialog, id->
