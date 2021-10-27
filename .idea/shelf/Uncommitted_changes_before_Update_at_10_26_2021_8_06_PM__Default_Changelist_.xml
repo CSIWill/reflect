@@ -1,0 +1,14 @@
+<changelist name="Uncommitted_changes_before_Update_at_10_26_2021_8_06_PM_[Default_Changelist]" date="1635293249667" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_26_2021_8_06_PM_[Default_Changelist]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 10/26/2021 8:06 PM [Default Changelist]" />
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="app/src/main/assets/database/mood_database.db-journal" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_26_2021_8_06_PM_[Default_Changelist]/mood_database.db-journal" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="app/src/main/assets/database - Shortcut.lnk" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_26_2021_8_06_PM_[Default_Changelist]/database - Shortcut.lnk" />
+  </binary>
+</changelist>
