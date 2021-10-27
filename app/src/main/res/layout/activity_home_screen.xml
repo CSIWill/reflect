@@ -77,4 +77,33 @@
         app:layout_constraintVertical_bias="0.768"
         app:srcCompat="@drawable/notif" />
 
+    <ImageButton
+        android:id="@+id/notifImageButton"
+        android:layout_width="41dp"
+        android:layout_height="44dp"
+        android:background="@null"
+        app:srcCompat="@drawable/notif"
+        tools:layout_editor_absoluteX="301dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.648"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintVertical_bias="0.768"
+        tools:layout_editor_absoluteY="662dp" />
+
+    <ImageButton
+        android:id="@+id/settingsImageButton"
+        android:layout_width="41dp"
+        android:layout_height="44dp"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.375"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/beginBtn"
+        app:layout_constraintVertical_bias="0.862"
+        app:srcCompat="@drawable/gear"
+        tools:layout_editor_absoluteY="496dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
