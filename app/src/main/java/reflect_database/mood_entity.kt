@@ -8,5 +8,7 @@ import androidx.room.PrimaryKey
 data class my_moods(
     @PrimaryKey(autoGenerate = true) val id: Int,
     @ColumnInfo(name = "mood") val mood: String,
-    @ColumnInfo(name = "mood_score") val mood_score: Float
+    @ColumnInfo(name = "hue") val hue: Int,
+    @ColumnInfo(name = "saturation") val saturation: Float,
+    @ColumnInfo(name = "lightness") val lightness: Float
 )
