@@ -7,7 +7,7 @@
     tools:context=".Notifications">
 
     <Button
-        android:id="@+id/butt"
+        android:id="@+id/journal_butt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#E91E63"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/butt1"
+        android:id="@+id/mood_butt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#D18B20"

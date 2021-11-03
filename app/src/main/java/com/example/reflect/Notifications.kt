@@ -7,22 +7,32 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
-//import android.os.Build
+// import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
-//import android.os.Bundle
+// import android.os.Bundle
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import kotlinx.android.synthetic.main.activity_notifications.*
 
 class Notifications : AppCompatActivity() {
+    val CHANNEL_ID = "example 1"
+    val notificationId = 101
+    val GROUP_KEY_MOODANDJOURNAL = "com.example.myapplication"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notifications)
-        val CHANNEL_ID = "example 1"
-         val notificationId = 101
-         val GROUP_KEY_MOODANDJOURNAL = "com.example.myapplication"
+        createNotificationChannel()
 
 
-          fun createNotificationChannel () {
+        journal_butt.setOnClickListener {
+            sendJournalNotif()
+        }
+
+        mood_butt.setOnClickListener {
+            sendMoodNotif()
+        }
+    }
+          private fun createNotificationChannel () {
             val name = "Journal com.example.reflect.Notifications"
             val descriptionText = "com.example.reflect.Notifications to journal"
             val importance = NotificationManager.IMPORTANCE_DEFAULT
@@ -38,9 +48,9 @@ class Notifications : AppCompatActivity() {
             notificationManager1.createNotificationChannel(channel1)
         }
 
-        fun sendNotification(){
+        private fun sendJournalNotif(){
             val intent = Intent(this, Notifications::class.java).apply {  PendingIntent.FLAG_UPDATE_CURRENT }
-            val pendingIntent = PendingIntent.getActivity(this,0,intent, PendingIntent.FLAG_IMMUTABLE)
+            val pendingIntent = PendingIntent.getActivity(this,0,intent, 0)
 
             val bitmap = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.journalicon)
 
@@ -60,10 +70,10 @@ class Notifications : AppCompatActivity() {
             }
         }
 
-        fun sendNotification1(){
+        private fun sendMoodNotif(){
 
             val intent = Intent(this, Notifications::class.java).apply { flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_NEW_TASK }
-            val pendingIntent = PendingIntent.getActivity(this,0,intent, PendingIntent.FLAG_IMMUTABLE)
+            val pendingIntent = PendingIntent.getActivity(this,0,intent, 0)
             val bitmap = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.redjournal)
             val builder = NotificationCompat.Builder(this, CHANNEL_ID)
                 .setLargeIcon(bitmap)
@@ -80,5 +90,4 @@ class Notifications : AppCompatActivity() {
             }
 
         }
-    }
     }
