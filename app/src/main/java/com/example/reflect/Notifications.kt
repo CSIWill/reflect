@@ -6,22 +6,23 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.os.Bundle
 //import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 //import android.os.Bundle
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 
-
-
 class Notifications : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_notifications)
+        val CHANNEL_ID = "example 1"
+         val notificationId = 101
+         val GROUP_KEY_MOODANDJOURNAL = "com.example.myapplication"
 
-    private val CHANNEL_ID = "example 1"
-    private val notificationId = 101
-    private val GROUP_KEY_MOODANDJOURNAL = "com.example.myapplication"
 
-
-    private fun createNotificationChannel () {
+          fun createNotificationChannel () {
             val name = "Journal com.example.reflect.Notifications"
             val descriptionText = "com.example.reflect.Notifications to journal"
             val importance = NotificationManager.IMPORTANCE_DEFAULT
@@ -35,48 +36,49 @@ class Notifications : AppCompatActivity() {
             val channel1 = NotificationChannel(CHANNEL_ID,name1, importance1).apply {description = descriptionText1}
             val notificationManager1:NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager1.createNotificationChannel(channel1)
-    }
-
-    private fun sendNotification(){
-        val intent = Intent(this, Notifications::class.java).apply {  PendingIntent.FLAG_UPDATE_CURRENT }
-        val pendingIntent = PendingIntent.getActivity(this,0,intent, PendingIntent.FLAG_IMMUTABLE)
-
-        val bitmap = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.journalicon)
-
-        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setLargeIcon(bitmap)
-            .setSmallIcon(R.drawable.redjournal)
-            .setContentTitle("Journal")
-            .setContentText("It's time to journal!")
-            .setContentIntent(pendingIntent)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setVisibility(NotificationCompat.VISIBILITY_PRIVATE)
-            //clears notification from tray after clicking on it
-            .setAutoCancel(true)
-            .setGroup(GROUP_KEY_MOODANDJOURNAL)
-        with(NotificationManagerCompat.from(this)){
-            notify(notificationId, builder.build())
         }
-    }
 
-    private fun sendNotification1(){
+        fun sendNotification(){
+            val intent = Intent(this, Notifications::class.java).apply {  PendingIntent.FLAG_UPDATE_CURRENT }
+            val pendingIntent = PendingIntent.getActivity(this,0,intent, PendingIntent.FLAG_IMMUTABLE)
 
-        val intent = Intent(this, Notifications::class.java).apply { flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_NEW_TASK }
-        val pendingIntent = PendingIntent.getActivity(this,0,intent, PendingIntent.FLAG_IMMUTABLE)
-        val bitmap = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.redjournal)
-        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setLargeIcon(bitmap)
-            .setContentTitle("Mood Tracker")
-            .setContentText("Have a moment? It's time to track your mood!")
-            .setContentIntent(pendingIntent)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setVisibility(NotificationCompat.VISIBILITY_PRIVATE)
+            val bitmap = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.journalicon)
+
+            val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+                .setLargeIcon(bitmap)
+                .setSmallIcon(R.drawable.redjournal)
+                .setContentTitle("Journal")
+                .setContentText("It's time to journal!")
+                .setContentIntent(pendingIntent)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setVisibility(NotificationCompat.VISIBILITY_PRIVATE)
                 //clears notification from tray after clicking on it
-            .setAutoCancel(true)
-            .setGroup(GROUP_KEY_MOODANDJOURNAL)
-        with(NotificationManagerCompat.from(this)){
-            notify(notificationId, builder.build())
+                .setAutoCancel(true)
+                .setGroup(GROUP_KEY_MOODANDJOURNAL)
+            with(NotificationManagerCompat.from(this)){
+                notify(notificationId, builder.build())
+            }
         }
 
+        fun sendNotification1(){
+
+            val intent = Intent(this, Notifications::class.java).apply { flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_NEW_TASK }
+            val pendingIntent = PendingIntent.getActivity(this,0,intent, PendingIntent.FLAG_IMMUTABLE)
+            val bitmap = BitmapFactory.decodeResource(applicationContext.resources, R.drawable.redjournal)
+            val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+                .setLargeIcon(bitmap)
+                .setContentTitle("Mood Tracker")
+                .setContentText("Have a moment? It's time to track your mood!")
+                .setContentIntent(pendingIntent)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setVisibility(NotificationCompat.VISIBILITY_PRIVATE)
+                //clears notification from tray after clicking on it
+                .setAutoCancel(true)
+                .setGroup(GROUP_KEY_MOODANDJOURNAL)
+            with(NotificationManagerCompat.from(this)){
+                notify(notificationId, builder.build())
+            }
+
+        }
     }
-}
+    }

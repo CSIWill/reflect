@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Reflect">
         <activity
+            android:name=".Notifications"
+            android:exported="true" />
+        <activity
             android:name=".settings"
             android:exported="true" />
         <activity

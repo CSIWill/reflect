@@ -24,7 +24,7 @@ class homeScreen : AppCompatActivity() {
 
         val nButton = findViewById<ImageButton>(R.id.notifImageButton) as ImageButton
         nButton.setOnClickListener{
-            startActivity(Intent(this@homeScreen, Mood::class.java))
+            startActivity(Intent(this@homeScreen, Notifications::class.java))
         }
 
     }
