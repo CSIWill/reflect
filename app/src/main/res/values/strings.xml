@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">reflect</string>
+
+    <string-array name="mood_list">
+        <item>Mood1</item>
+        <item>Mood2</item>
+        <item>Mood3</item>
+        <item>Mood4</item>
+        <item>Mood5</item>
+        <item>Mood6</item>
+        <item>Mood7</item>
+        <item>Mood8</item>
+        <item>Mood9</item>
+        <item>Mood10</item>
+
+    </string-array>
 </resources>

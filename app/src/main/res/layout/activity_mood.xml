@@ -33,6 +33,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textView6"
+        android:layout_width="391dp"
+        android:layout_height="31dp"
+        android:text="Intensity"
+        android:textAlignment="center"
+        android:textSize="27dp"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner1"
+        app:layout_constraintVertical_bias="0.846" />
+
+    <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,14 +69,26 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:layout_constraintVertical_bias="0.742" />
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="351dp"
-        android:layout_height="249dp"
-        app:layout_constraintBottom_toBottomOf="@+id/enterMoodBtn"
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="247dp"
+        android:layout_height="29dp"
+        app:layout_constraintBottom_toTopOf="@+id/enterMoodBtn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.445"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView4" />
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="376dp"
+        android:layout_height="27dp"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/moodscale" />
+        app:layout_constraintVertical_bias="0.206" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
