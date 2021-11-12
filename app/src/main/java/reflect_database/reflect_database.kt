@@ -17,7 +17,7 @@ abstract class my_database: RoomDatabase() {
         private var INSTANCE: my_database? = null
         fun getDatabase(context: Context): my_database {
             return INSTANCE ?: synchronized(this) {
-                val passphrase = SQLiteDatabase.getBytes("P@s5P4ras3VeryL0n9".toCharArray())
+                val passphrase = SQLiteDatabase.getBytes("Passphras3".toCharArray())
                 val factory = SupportFactory(passphrase)
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
