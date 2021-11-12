@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 interface my_dao {
 //    Add Entry
     @Insert
-    suspend fun addEntry(my_entry: my_entry)
+    suspend fun addEntry(new_entry: my_entry)
 //    List Entries
     @Query("SELECT * FROM journal_table")
     fun getEntries(): Flow<List<my_entry>>
