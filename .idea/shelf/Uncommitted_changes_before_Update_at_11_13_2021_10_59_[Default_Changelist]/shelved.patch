@@ -1,0 +1,45 @@
+Index: app/src/main/java/com/example/reflect/EntryRepository.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.reflect\r\n\r\nimport androidx.annotation.WorkerThread\r\nimport reflect_database.my_dao\r\nimport reflect_database.my_entry\r\n\r\nclass EntryRepository(private val entryDao: my_dao) {\r\n\r\n    val entries Flow<List<my_entry>> = entryDao.getEntries()\r\n\r\n    @Suppress(\"RedundantSuspendModifier\")\r\n    @WorkerThread\r\n    suspend fun addEntry(journal_entry: my_entry) {\r\n        entryDao.addEntry(journal_entry)\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/reflect/EntryRepository.kt b/app/src/main/java/com/example/reflect/EntryRepository.kt
+--- a/app/src/main/java/com/example/reflect/EntryRepository.kt	(revision f04eb066650b7e604536d614885c6121fa4921fe)
++++ b/app/src/main/java/com/example/reflect/EntryRepository.kt	(date 1636818398890)
+@@ -1,16 +1,16 @@
+-package com.example.reflect
+-
+-import androidx.annotation.WorkerThread
+-import reflect_database.my_dao
+-import reflect_database.my_entry
+-
+-class EntryRepository(private val entryDao: my_dao) {
+-
+-    val entries Flow<List<my_entry>> = entryDao.getEntries()
+-
+-    @Suppress("RedundantSuspendModifier")
+-    @WorkerThread
+-    suspend fun addEntry(journal_entry: my_entry) {
+-        entryDao.addEntry(journal_entry)
+-    }
+-}
+\ No newline at end of file
++//package com.example.reflect
++//
++//import androidx.annotation.WorkerThread
++//import reflect_database.my_dao
++//import reflect_database.my_entry
++//
++//class EntryRepository(private val entryDao: my_dao) {
++//
++//    val entries Flow<List<my_entry>> = entryDao.getEntries()
++//
++//    @Suppress("RedundantSuspendModifier")
++//    @WorkerThread
++//    suspend fun addEntry(journal_entry: my_entry) {
++//        entryDao.addEntry(journal_entry)
++//    }
++//}
+\ No newline at end of file
