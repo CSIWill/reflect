@@ -41,7 +41,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginBottom="16dp"
         android:background="#99FFBF00"
-        android:text="@string/previousEntryButtonText"
+        android:text="previousEntryButtonText"
         app:layout_constraintBottom_toTopOf="@+id/entryText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -51,13 +51,14 @@
         android:id="@+id/nextEntry"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:background="#99FFBF00"
-        android:text="@string/nextEntryButtonText"
+        android:text="nextEntryButtonText"
         app:layout_constraintBottom_toTopOf="@+id/entryText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/previousEntry"
         app:layout_constraintVertical_bias="1.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
