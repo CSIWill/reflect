@@ -6,11 +6,15 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_main.*
+import reflect_database.*
+import androidx.fragment.app.viewModels
+import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
-
+    val vm : EntryViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +42,9 @@ class MainActivity : AppCompatActivity() {
 
 
                 val text = editText.text // TEXT - THIS NEEDS TO BE ADDED TO THE DATABASE
+//                val newEntry:my_entry = [1,1,text,1]
+
+                vm.addEntry(my_entry(text.toString()))
 
                 Toast.makeText(this, text, Toast.LENGTH_LONG).show() // Shouts text - Can remove when database works
             }
