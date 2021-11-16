@@ -13,7 +13,7 @@ import reflect_database.my_entry
 //}
 class EntryRepository(private val entryDao: my_dao) {
 
-//    val entries: Flow<List<my_entry>> = entryDao.getEntries()
+    val entries: Flow<List<my_entry>> = entryDao.getEntries()
 
 
     @Suppress("RedundantSuspendModifier")

@@ -12,7 +12,7 @@ import kotlinx.coroutines.runBlocking
 class EntryViewModel(private val repository: EntryRepository) : ViewModel() {
 
     fun addEntry(new_entry: my_entry) = runBlocking { repository.addEntry(new_entry) }
-//    val allEntries: LiveData<List<my_entry>> = repository.allEntries.asLiveData()
+    val allEntries: LiveData<List<my_entry>> = repository.entries.asLiveData()
 //    fun addEntry(new_entry: my_entry) = viewModelScope.launch {
 //        repository.addEntry(new_entry)
 //    }
