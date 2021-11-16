@@ -6,8 +6,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
-class reviewScreen : AppCompatActivity() {
-    class reviewScreen : AppCompatActivity() {
+    class ReviewScreen : AppCompatActivity() {
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.review_entry)
@@ -33,4 +32,3 @@ class reviewScreen : AppCompatActivity() {
             }
         }
     }
-}

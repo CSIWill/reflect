@@ -18,8 +18,7 @@ class homeScreen : AppCompatActivity() {
             }
         val reviewBtn = findViewById<Button>(R.id.button2)
         reviewBtn.setOnClickListener{
-            setContentView(R.layout.review_entry)
-            startActivity(Intent(this@homeScreen, reviewScreen::class.java))
+            startActivity(Intent(this@homeScreen, ReviewScreen::class.java))
         }
         val sButton = findViewById<ImageButton>(R.id.settingsImageButton) as ImageButton
         sButton.setOnClickListener{
