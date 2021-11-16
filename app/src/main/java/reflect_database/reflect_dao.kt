@@ -11,8 +11,8 @@ interface my_dao {
     @Insert
     suspend fun addEntry(new_entry: my_entry)
 //    List Entries
-    @Query("SELECT * FROM journal_table")
-    fun getEntries(): Flow<List<my_entry>>
+//    @Query("SELECT * FROM journal_table")
+//    fun getEntries(): Flow<List<my_entry>>
 //    List Entry From date
 //    @Query("SELECT journal_time FROM journal_table")
 

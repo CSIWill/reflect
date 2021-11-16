@@ -9,9 +9,9 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_main.*
-import reflect_database.*
 import androidx.fragment.app.viewModels
 import kotlinx.coroutines.*
+import reflect_database.my_entry
 
 class MainActivity : AppCompatActivity() {
     val vm : EntryViewModel by viewModels()
@@ -42,7 +42,6 @@ class MainActivity : AppCompatActivity() {
 
 
                 val text = editText.text // TEXT - THIS NEEDS TO BE ADDED TO THE DATABASE
-//                val newEntry:my_entry = [1,1,text,1]
 
                 vm.addEntry(my_entry(text.toString()))
 
