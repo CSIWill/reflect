@@ -15,6 +15,7 @@ import reflect_database.my_database
 import reflect_database.my_entry
 
 class MainActivity : AppCompatActivity() {
+//    val vm:EntryViewModel by viewModels {EntryViewModelFactory()}
     val vm:EntryViewModel by viewModels {EntryViewModelFactory(initDb())}
 
     private fun initDb(): EntryRepository {
