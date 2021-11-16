@@ -7,13 +7,15 @@ import reflect_database.my_entry
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import kotlinx.coroutines.runBlocking
 
 class EntryViewModel(private val repository: EntryRepository) : ViewModel() {
 
+    fun addEntry(new_entry: my_entry) = runBlocking { repository.addEntry(new_entry) }
 //    val allEntries: LiveData<List<my_entry>> = repository.allEntries.asLiveData()
-    fun addEntry(new_entry: my_entry) = viewModelScope.launch {
-        repository.addEntry(new_entry)
-    }
+//    fun addEntry(new_entry: my_entry) = viewModelScope.launch {
+//        repository.addEntry(new_entry)
+//    }
 }
 //class EntryViewModelFactory(private val repository: EntryRepository) : ViewModelProvider.Factory {
 //    override fun <T: ViewModel> create(modelClass: Class<T>): T {

@@ -11,11 +11,16 @@ import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_main.*
 import androidx.fragment.app.viewModels
 import kotlinx.coroutines.*
+import reflect_database.my_database
 import reflect_database.my_entry
 
 class MainActivity : AppCompatActivity() {
-    val vm : EntryViewModel by viewModels()
+    val vm:EntryViewModel by viewModels {EntryViewModelFactory(initDb())}
 
+    private fun initDb(): EntryRepository {
+        val db = my_database.getDatabase(this)
+        return EntryRepository(db.reflect_dao())
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,9 +29,6 @@ class MainActivity : AppCompatActivity() {
        val showButton = findViewById<Button>(R.id.showInput)
        val editText = findViewById<EditText>(R.id.editText)
 
-
-
-
 //ALERT BUTTON
         val mAlertDialogBtn = findViewById<Button>(R.id.showInput)
 
@@ -34,7 +36,7 @@ class MainActivity : AppCompatActivity() {
             val mAlertDialog = AlertDialog.Builder(this@MainActivity)
             mAlertDialog.setTitle("PLEASE REMEMBER") //alert dialog title
             mAlertDialog.setMessage("You Will Not Be Able To Edit Your Journal Entry After You Hit Submit")
-            mAlertDialog.setIcon(R.mipmap.ic_launcher);
+            mAlertDialog.setIcon(R.mipmap.ic_launcher)
 
             mAlertDialog.setPositiveButton("Submit"){dialog, id->
 
