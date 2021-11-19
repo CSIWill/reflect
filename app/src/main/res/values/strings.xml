@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">reflect</string>
     <string-array name="mood_list">
+        <item>Choose a Mood?</item>
         <item>Mood1</item>
         <item>Mood2</item>
         <item>Mood3</item>
