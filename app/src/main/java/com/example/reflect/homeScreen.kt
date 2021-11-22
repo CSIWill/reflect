@@ -16,14 +16,11 @@ class homeScreen : AppCompatActivity() {
             mButton.setOnClickListener{
                 startActivity(Intent(this@homeScreen, Mood::class.java))
             }
-        val reviewBtn = findViewById<Button>(R.id.button2)
+        val reviewBtn = findViewById<Button>(R.id.reviewButton)
         reviewBtn.setOnClickListener{
             startActivity(Intent(this@homeScreen, ReviewScreen::class.java))
         }
-        val sButton = findViewById<ImageButton>(R.id.settingsImageButton) as ImageButton
-        sButton.setOnClickListener{
-            startActivity(Intent(this@homeScreen, settings::class.java))
-        }
+
 
         val nButton = findViewById<ImageButton>(R.id.notifImageButton) as ImageButton
         nButton.setOnClickListener{
