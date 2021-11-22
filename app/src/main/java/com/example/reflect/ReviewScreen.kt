@@ -6,11 +6,12 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.example.reflect.EntryRepository
+import com.example.reflect.EntryViewModel
+import com.example.reflect.EntryViewModelFactory
+import com.example.reflect.R
 import reflect_database.my_database
-import androidx.lifecycle.observe
-
+import reflect_database.my_entry
 
 class ReviewScreen : AppCompatActivity() {
     val vm: EntryViewModel by viewModels { EntryViewModelFactory(initDb()) }
@@ -19,15 +20,11 @@ class ReviewScreen : AppCompatActivity() {
         val db = my_database.getDatabase(this)
         return EntryRepository(db.reflect_dao())
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.review_entry)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
-        val adapter = EntryAdapter()
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
+
 
         // get reference to buttons
         //these are the buttons on review_entry
@@ -38,8 +35,8 @@ class ReviewScreen : AppCompatActivity() {
 
         //this is the button on activity_main
 
-//        val mostRecent = vm.allEntries
-//        entryText.setText(mostRecent)
+        val mostRecent = vm.allEntries.toString()
+        entryText.setText(mostRecent)
 
         // set on-click listener
         btnPrev.setOnClickListener {
@@ -50,12 +47,6 @@ class ReviewScreen : AppCompatActivity() {
         btnNext.setOnClickListener {
             entryText.setText(R.string.entryText2)
             entryDate.setText(R.string.entryDate2)
-        }
-        vm.allEntries.observe(owner = this) { journal_entry ->
-            journal_entry.let {
-                adapter.submitList(
-                    it)
-            }
         }
     }
 }
