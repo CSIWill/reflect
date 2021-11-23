@@ -16,9 +16,6 @@
             android:name=".ReviewScreen"
             android:exported="true" />
         <activity
-            android:name=".settings"
-            android:exported="true" />
-        <activity
             android:name=".Mood"
             android:exported="true" />
         <activity
