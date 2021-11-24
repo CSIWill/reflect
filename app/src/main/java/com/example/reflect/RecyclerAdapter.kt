@@ -24,13 +24,13 @@ class RecyclerAdapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
     }
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        var itemDate: TextView
-        var itemEntry: TextView
+      //  var itemDate: TextView
+      //  var itemEntry: TextView
         //var itemMood: TextView
 
         init {
-            itemDate = itemView.findViewById(com.example.reflect.R.id.entryDate)
-            itemEntry = itemView.findViewById(com.example.reflect.R.id.entryText)
+          //  itemDate = itemView.findViewById(com.example.reflect.R.id.entryDate)
+          //  itemEntry = itemView.findViewById(com.example.reflect.R.id.listView)
             //itemMood = itemView.findViewById(com.example.reflect.R.id.item_mood)
         }
     }

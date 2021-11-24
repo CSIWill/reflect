@@ -23,7 +23,7 @@ class EntryAdapter: ListAdapter<my_entry, EntryAdapter.EntryViewHolder> (Entry_C
     }
 
     class EntryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val entryItemView: TextView = itemView.findViewById(R.id.entryText)
+        private val entryItemView: TextView = itemView.findViewById(R.id.listView)
 
         fun bind(text: String?) {
             entryItemView.text = text
