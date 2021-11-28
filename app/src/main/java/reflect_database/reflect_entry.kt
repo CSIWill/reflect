@@ -5,16 +5,17 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Insert
 import androidx.room.PrimaryKey
+import java.util.*
 
 
 @Entity(tableName = "journal_table")
 data class my_entry(
-    @PrimaryKey val journal_entry: String
-//    val id: Int,
+//    @PrimaryKey val journal_entry: String
+    @PrimaryKey(autoGenerate = true) val id: Int,
 //    Time of entry
-//    @NonNull @ColumnInfo(name = "journal_time") val journal_time: Int,
+    @ColumnInfo(name = "journal_time") val journal_time: Calendar = Calendar.getInstance(),
 //    Entry
-//    @NonNull @ColumnInfo(name = "journal_entry") val journal_entry: String,
+    @ColumnInfo(name = "journal_entry") val journal_entry: String,
 //    Mood Score
-//    @NonNull @ColumnInfo(name = "journal_mood") val journal_mood: Float
+//    @ColumnInfo(name = "journal_mood") val journal_mood: Float
 )

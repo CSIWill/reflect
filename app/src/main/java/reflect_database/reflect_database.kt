@@ -8,10 +8,11 @@ import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.*;
 
 //exportSchema set to false as we only want 1 version of it for in-memory only case
-@Database(entities = [my_entry::class], version = 1, exportSchema = false)
+@Database(entities = [my_entry::class, my_moods::class], version = 1, exportSchema = false)
 //create
 abstract class my_database: RoomDatabase() {
     abstract fun reflect_dao(): my_dao
+    abstract fun mood_dao(): my_mood_dao
     companion object {
         @Volatile
         private var INSTANCE: my_database? = null
