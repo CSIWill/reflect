@@ -1,18 +1,18 @@
 package com.example.reflect
 
+import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_main.*
-import androidx.fragment.app.viewModels
 import kotlinx.coroutines.*
 import reflect_database.my_database
 import reflect_database.my_entry
+import java.util.Date
 
 class MainActivity : AppCompatActivity() {
 //    val vm:EntryViewModel by viewModels {EntryViewModelFactory()}
@@ -46,7 +46,10 @@ class MainActivity : AppCompatActivity() {
 
                 val text = editText.text // TEXT - THIS NEEDS TO BE ADDED TO THE DATABASE
 
-                vm.addEntry(my_entry(text.toString()))
+                val currentTime:Date = Date()
+
+
+                vm.addEntry(my_entry(0,currentTime.getTime(),text.toString()))
 
                 Toast.makeText(this, text, Toast.LENGTH_LONG).show() // Shouts text - Can remove when database works
             }

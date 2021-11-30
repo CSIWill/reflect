@@ -4,11 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import net.sqlcipher.database.SQLiteDatabase;
-import net.sqlcipher.database.*;
+import androidx.room.TypeConverters
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.*
 
 //exportSchema set to false as we only want 1 version of it for in-memory only case
 @Database(entities = [my_entry::class, my_moods::class], version = 1, exportSchema = false)
+//@TypeConverters(Converters::class)
 //create
 abstract class my_database: RoomDatabase() {
     abstract fun reflect_dao(): my_dao
