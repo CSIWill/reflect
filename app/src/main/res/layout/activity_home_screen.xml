@@ -41,24 +41,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="49dp"
-        android:layout_height="45dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.375"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/beginBtn"
-        app:layout_constraintVertical_bias="0.862"
-        app:srcCompat="@drawable/gear" />
-
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/reviewButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:text="Review"
-        app:layout_constraintBottom_toTopOf="@+id/imageView6"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,9 +60,8 @@
         android:layout_height="44dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.648"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/reviewButton"
         app:layout_constraintVertical_bias="0.768"
         app:srcCompat="@drawable/notif" />
 
@@ -82,28 +70,11 @@
         android:layout_width="41dp"
         android:layout_height="44dp"
         android:background="@null"
-        app:srcCompat="@drawable/notif"
-        tools:layout_editor_absoluteX="301dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.648"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/reviewButton"
         app:layout_constraintVertical_bias="0.768"
-        tools:layout_editor_absoluteY="662dp" />
-
-    <ImageButton
-        android:id="@+id/settingsImageButton"
-        android:layout_width="41dp"
-        android:layout_height="44dp"
-        android:background="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.375"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/beginBtn"
-        app:layout_constraintVertical_bias="0.862"
-        app:srcCompat="@drawable/gear"
-        tools:layout_editor_absoluteY="496dp" />
+        app:srcCompat="@drawable/notif" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

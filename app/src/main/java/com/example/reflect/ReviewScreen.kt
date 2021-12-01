@@ -2,60 +2,36 @@ package com.example.reflect
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
-import androidx.activity.viewModels
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.example.reflect.EntryRepository
+import com.example.reflect.EntryViewModel
+import com.example.reflect.EntryViewModelFactory
+import com.example.reflect.R
+import kotlinx.android.synthetic.main.review_entry.*
 import reflect_database.my_database
-import androidx.lifecycle.observe
-
+import reflect_database.my_entry
 
 class ReviewScreen : AppCompatActivity() {
-    val vm: EntryViewModel by viewModels { EntryViewModelFactory(initDb()) }
-
-    private fun initDb(): EntryRepository {
-        val db = my_database.getDatabase(this)
-        return EntryRepository(db.reflect_dao())
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.review_entry)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
-        val adapter = EntryAdapter()
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        val listView = findViewById<ListView>(R.id.listView)
+        val entry = arrayOf("Test1", "Test2", "test3")
 
-        // get reference to buttons
-        //these are the buttons on review_entry
-        val btnPrev = findViewById<Button>(R.id.previousEntry)
-        val btnNext = findViewById<Button>(R.id.nextEntry)
-        val entryDate = findViewById<TextView>(R.id.entryDate)
-        val entryText = findViewById<TextView>(R.id.entryText)
+        val arrayAdapter: ArrayAdapter<String> = ArrayAdapter(
+            this, android.R.layout.simple_list_item_1, entry
+        )
 
-        //this is the button on activity_main
+        listView.adapter= arrayAdapter
 
-//        val mostRecent = vm.allEntries
-//        entryText.setText(mostRecent)
-
-        // set on-click listener
-        btnPrev.setOnClickListener {
-            entryText.setText(R.string.entryText1)
-            entryDate.setText(R.string.entryDate1)
+        listView.setOnItemClickListener { adapterView, view, i, l ->
+            Toast.makeText(this, "Testing lmao " + entry[i],Toast.LENGTH_LONG)
+                .show()
         }
 
-        btnNext.setOnClickListener {
-            entryText.setText(R.string.entryText2)
-            entryDate.setText(R.string.entryDate2)
-        }
-        vm.allEntries.observe(owner = this) { journal_entry ->
-            journal_entry.let {
-                adapter.submitList(
-                    it)
-            }
+
         }
     }
-}
+
