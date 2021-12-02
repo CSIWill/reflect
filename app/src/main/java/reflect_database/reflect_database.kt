@@ -33,13 +33,13 @@ abstract class my_database: RoomDatabase() {
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)
                             ioThread {
-                                getDatabase(context).mood_dao().updateMood(my_moods(1,"Grouchy",0.0,100.0,50.0))
-                                getDatabase(context).mood_dao().updateMood(my_moods(2,"Nervous",39.0,100.0,50.0))
-                                getDatabase(context).mood_dao().updateMood(my_moods(3,"Happy",60.0,100.0,50.0))
-                                getDatabase(context).mood_dao().updateMood(my_moods(4,"Calm",120.0,100.0,50.0))
-                                getDatabase(context).mood_dao().updateMood(my_moods(5,"Sad",240.0,100.0,50.0))
-                                getDatabase(context).mood_dao().updateMood(my_moods(6,"Distant",275.0,100.0,50.0))
-                                getDatabase(context).mood_dao().updateMood(my_moods(7,"Loving",300.0,100.0,50.0))
+                                getDatabase(context).mood_dao().updateMood(my_moods("Grouchy",0.0,100.0,50.0))
+                                getDatabase(context).mood_dao().updateMood(my_moods("Nervous",39.0,100.0,50.0))
+                                getDatabase(context).mood_dao().updateMood(my_moods("Happy",60.0,100.0,50.0))
+                                getDatabase(context).mood_dao().updateMood(my_moods("Calm",120.0,100.0,50.0))
+                                getDatabase(context).mood_dao().updateMood(my_moods("Sad",240.0,100.0,50.0))
+                                getDatabase(context).mood_dao().updateMood(my_moods("Distant",275.0,100.0,50.0))
+                                getDatabase(context).mood_dao().updateMood(my_moods("Loving",300.0,100.0,50.0))
                             }
                         }
                     })

@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.activity_mood.*
 
 
 class Mood : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mood)

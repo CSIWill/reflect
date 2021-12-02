@@ -1,0 +1,245 @@
+Index: app/src/main/java/com/example/reflect/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.reflect\r\n\r\nimport android.icu.util.Calendar\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport android.widget.Button\r\nimport android.widget.EditText\r\nimport android.widget.Toast\r\nimport androidx.activity.viewModels\r\nimport androidx.appcompat.app.AlertDialog\r\nimport kotlinx.android.synthetic.main.activity_main.*\r\nimport kotlinx.coroutines.*\r\nimport reflect_database.my_database\r\nimport reflect_database.my_entry\r\nimport java.util.Date\r\n\r\nclass MainActivity : AppCompatActivity() {\r\n//    val vm:EntryViewModel by viewModels {EntryViewModelFactory((application as W)}\r\n    val vm:EntryViewModel by viewModels {EntryViewModelFactory(initDb())}\r\n\r\n    private fun initDb(): EntryRepository {\r\n\r\n        val db = my_database.getDatabase(this)\r\n        return EntryRepository(db.reflect_dao())\r\n    }\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_main)\r\n\r\n       val showButton = findViewById<Button>(R.id.showInput)\r\n       val editText = findViewById<EditText>(R.id.editText)\r\n\r\n//ALERT BUTTON\r\n        val mAlertDialogBtn = findViewById<Button>(R.id.showInput)\r\n\r\n        showInput.setOnClickListener {\r\n            val mAlertDialog = AlertDialog.Builder(this@MainActivity)\r\n            mAlertDialog.setTitle(\"PLEASE REMEMBER\") //alert dialog title\r\n            mAlertDialog.setMessage(\"You Will Not Be Able To Edit Your Journal Entry After You Hit Submit\")\r\n            mAlertDialog.setIcon(R.mipmap.ic_launcher)\r\n\r\n            mAlertDialog.setPositiveButton(\"Submit\"){dialog, id->\r\n\r\n                Toast.makeText(this@MainActivity, \"Submitted :D\", Toast.LENGTH_SHORT).show() //action After submitted\r\n\r\n\r\n                val text = editText.text // TEXT - THIS NEEDS TO BE ADDED TO THE DATABASE\r\n\r\n                val currentTime:Date = Date()\r\n\r\n\r\n                vm.addEntry(my_entry(0,currentTime.getTime(),text.toString(),1))\r\n\r\n                Toast.makeText(this, text, Toast.LENGTH_LONG).show() // Shouts text - Can remove when database works\r\n            }\r\n\r\n            mAlertDialog.setNegativeButton(\"Go Back\"){dialog, id->\r\n                dialog.dismiss()\r\n\r\n        }\r\n        mAlertDialog.show()\r\n        }\r\n\r\n\r\n\r\n    }\r\n\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/reflect/MainActivity.kt b/app/src/main/java/com/example/reflect/MainActivity.kt
+--- a/app/src/main/java/com/example/reflect/MainActivity.kt	(revision 3e3311e4a7c7925b696a645dc8f17df9c9acd63c)
++++ b/app/src/main/java/com/example/reflect/MainActivity.kt	(date 1638482206894)
+@@ -44,13 +44,13 @@
+ 
+                 Toast.makeText(this@MainActivity, "Submitted :D", Toast.LENGTH_SHORT).show() //action After submitted
+ 
+-
++3
+                 val text = editText.text // TEXT - THIS NEEDS TO BE ADDED TO THE DATABASE
+ 
+                 val currentTime:Date = Date()
+ 
+ 
+-                vm.addEntry(my_entry(0,currentTime.getTime(),text.toString(),1))
++                vm.addEntry(my_entry(0,currentTime.getTime(),text.toString(),"Grouchy"))
+ 
+                 Toast.makeText(this, text, Toast.LENGTH_LONG).show() // Shouts text - Can remove when database works
+             }
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\r\n    <string name=\"app_name\">reflect</string>\r\n    <string-array name=\"mood_list\">\r\n        <item>Choose a Mood</item>\r\n        <item>Mood1</item>\r\n        <item>Mood2</item>\r\n        <item>Mood3</item>\r\n        <item>Mood4</item>\r\n        <item>Mood5</item>\r\n        <item>Mood6</item>\r\n        <item>Mood7</item>\r\n        <item>Mood8</item>\r\n        <item>Mood9</item>\r\n        <item>Mood10</item>\r\n\r\n    </string-array>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+--- a/app/src/main/res/values/strings.xml	(revision 3e3311e4a7c7925b696a645dc8f17df9c9acd63c)
++++ b/app/src/main/res/values/strings.xml	(date 1638481497009)
+@@ -2,16 +2,14 @@
+     <string name="app_name">reflect</string>
+     <string-array name="mood_list">
+         <item>Choose a Mood</item>
+-        <item>Mood1</item>
+-        <item>Mood2</item>
+-        <item>Mood3</item>
+-        <item>Mood4</item>
+-        <item>Mood5</item>
+-        <item>Mood6</item>
+-        <item>Mood7</item>
+-        <item>Mood8</item>
+-        <item>Mood9</item>
+-        <item>Mood10</item>
++        <item>Grouchy</item>
++        <item>Nervous</item>
++        <item>Happy</item>
++        <item>Calm</item>
++        <item>Sad</item>
++        <item>Distant</item>
++        <item>Living</item>
+ 
+     </string-array>
+-</resources>
+\ No newline at end of file
++</resources>
++
+Index: app/src/main/java/com/example/reflect/Mood.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.reflect\r\n\r\nimport android.content.Intent\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport android.widget.Button\r\nimport android.view.View\r\nimport android.widget.ArrayAdapter\r\nimport android.widget.Toast\r\nimport kotlinx.android.synthetic.main.activity_mood.*\r\n\r\n\r\nclass Mood : AppCompatActivity() {\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_mood)\r\n\r\n        val mButton = findViewById<Button>(R.id.enterMoodBtn) as Button\r\n        mButton.setOnClickListener{\r\n            startActivity(Intent(this@Mood, MainActivity::class.java))\r\n        }\r\n\r\n        // Create an ArrayAdapter\r\n        val adapter = ArrayAdapter.createFromResource(this,\r\n            R.array.mood_list, android.R.layout.simple_spinner_item)\r\n        // Specify the layout to use when the list of choices appears\r\n        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)\r\n        // Apply the adapter to the spinner\r\n        spinner1.adapter = adapter\r\n\r\n\r\n        fun getValues(view: View) {\r\n            Toast.makeText(this, \"Spinner 2 \" + spinner1.selectedItem.toString(),\r\n                Toast.LENGTH_LONG).show()\r\n\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/reflect/Mood.kt b/app/src/main/java/com/example/reflect/Mood.kt
+--- a/app/src/main/java/com/example/reflect/Mood.kt	(revision 3e3311e4a7c7925b696a645dc8f17df9c9acd63c)
++++ b/app/src/main/java/com/example/reflect/Mood.kt	(date 1638481957876)
+@@ -11,6 +11,7 @@
+ 
+ 
+ class Mood : AppCompatActivity() {
++
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
+         setContentView(R.layout.activity_mood)
+Index: app/src/main/java/reflect_database/reflect_database.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package reflect_database\r\n\r\nimport android.content.Context\r\nimport androidx.room.Database\r\nimport androidx.room.Room\r\nimport androidx.room.RoomDatabase\r\nimport androidx.sqlite.db.SupportSQLiteDatabase\r\nimport kotlinx.coroutines.CoroutineScope\r\n\r\n//exportSchema set to false as we only want 1 version of it for in-memory only case\r\n@Database(entities = [my_entry::class, my_moods::class], version = 1, exportSchema = false)\r\n//@TypeConverters(Converters::class)\r\n//create\r\nabstract class my_database: RoomDatabase() {\r\n    abstract fun reflect_dao(): my_dao\r\n    abstract fun mood_dao(): my_mood_dao\r\n    companion object {\r\n        @Volatile\r\n        private var INSTANCE: my_database? = null\r\n        fun getDatabase(context: Context): my_database {\r\n            return INSTANCE ?: synchronized(this) {\r\n//                val passphrase = SQLiteDatabase.getBytes(\"Passphras3\".toCharArray())\r\n//                val factory = SupportFactory(passphrase)\r\n                val instance = Room.databaseBuilder(\r\n                    context.applicationContext,\r\n                    my_database::class.java,\r\n                    \"reflect_database\")\r\n\r\n//                    .openHelperFactory(factory)\r\n//                    .fallbackToDestructiveMigration()\r\n\r\n                    .addCallback(object:Callback() {\r\n                        override fun onCreate(db: SupportSQLiteDatabase) {\r\n                            super.onCreate(db)\r\n                            ioThread {\r\n                                getDatabase(context).mood_dao().updateMood(my_moods(1,\"Grouchy\",0.0,100.0,50.0))\r\n                                getDatabase(context).mood_dao().updateMood(my_moods(2,\"Nervous\",39.0,100.0,50.0))\r\n                                getDatabase(context).mood_dao().updateMood(my_moods(3,\"Happy\",60.0,100.0,50.0))\r\n                                getDatabase(context).mood_dao().updateMood(my_moods(4,\"Calm\",120.0,100.0,50.0))\r\n                                getDatabase(context).mood_dao().updateMood(my_moods(5,\"Sad\",240.0,100.0,50.0))\r\n                                getDatabase(context).mood_dao().updateMood(my_moods(6,\"Distant\",275.0,100.0,50.0))\r\n                                getDatabase(context).mood_dao().updateMood(my_moods(7,\"Loving\",300.0,100.0,50.0))\r\n                            }\r\n                        }\r\n                    })\r\n                    .build()\r\n                INSTANCE = instance\r\n                instance\r\n            }\r\n        }\r\n//        private class reflectDatabaseCallback(\r\n//            private val scope: CoroutineScope\r\n//        ) : RoomDatabase.Callback() {\r\n//            override fun onCreate(db:SupportSQLiteDatabase) {\r\n//                super.onCreate(db)\r\n//            }\r\n//        }\r\n//        suspend fun moodDatabase(mood_dao: my_mood_dao) {\r\n//            mood_dao.updateMood(my_moods(1,\"Grouchy\",0.0,100.0,50.0))\r\n//            mood_dao.updateMood(my_moods(2,\"Nervous\",39.0,100.0,50.0))\r\n//            mood_dao.updateMood(my_moods(3,\"Happy\",60.0,100.0,50.0))\r\n//            mood_dao.updateMood(my_moods(4,\"Calm\",120.0,100.0,50.0))\r\n//            mood_dao.updateMood(my_moods(5,\"Sad\",240.0,100.0,50.0))\r\n//            mood_dao.updateMood(my_moods(6,\"Distant\",275.0,100.0,50.0))\r\n//            mood_dao.updateMood(my_moods(7,\"Loving\",300.0,100.0,50.0))\r\n//        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/reflect_database/reflect_database.kt b/app/src/main/java/reflect_database/reflect_database.kt
+--- a/app/src/main/java/reflect_database/reflect_database.kt	(revision 3e3311e4a7c7925b696a645dc8f17df9c9acd63c)
++++ b/app/src/main/java/reflect_database/reflect_database.kt	(date 1638480610675)
+@@ -33,13 +33,13 @@
+                         override fun onCreate(db: SupportSQLiteDatabase) {
+                             super.onCreate(db)
+                             ioThread {
+-                                getDatabase(context).mood_dao().updateMood(my_moods(1,"Grouchy",0.0,100.0,50.0))
+-                                getDatabase(context).mood_dao().updateMood(my_moods(2,"Nervous",39.0,100.0,50.0))
+-                                getDatabase(context).mood_dao().updateMood(my_moods(3,"Happy",60.0,100.0,50.0))
+-                                getDatabase(context).mood_dao().updateMood(my_moods(4,"Calm",120.0,100.0,50.0))
+-                                getDatabase(context).mood_dao().updateMood(my_moods(5,"Sad",240.0,100.0,50.0))
+-                                getDatabase(context).mood_dao().updateMood(my_moods(6,"Distant",275.0,100.0,50.0))
+-                                getDatabase(context).mood_dao().updateMood(my_moods(7,"Loving",300.0,100.0,50.0))
++                                getDatabase(context).mood_dao().updateMood(my_moods("Grouchy",0.0,100.0,50.0))
++                                getDatabase(context).mood_dao().updateMood(my_moods("Nervous",39.0,100.0,50.0))
++                                getDatabase(context).mood_dao().updateMood(my_moods("Happy",60.0,100.0,50.0))
++                                getDatabase(context).mood_dao().updateMood(my_moods("Calm",120.0,100.0,50.0))
++                                getDatabase(context).mood_dao().updateMood(my_moods("Sad",240.0,100.0,50.0))
++                                getDatabase(context).mood_dao().updateMood(my_moods("Distant",275.0,100.0,50.0))
++                                getDatabase(context).mood_dao().updateMood(my_moods("Loving",300.0,100.0,50.0))
+                             }
+                         }
+                     })
+Index: app/src/main/java/reflect_database/mood_dao.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package reflect_database\r\n\r\nimport androidx.room.Dao\r\nimport androidx.room.Insert\r\nimport androidx.room.Query\r\nimport kotlinx.coroutines.flow.Flow\r\n\r\n@Dao\r\ninterface my_mood_dao{\r\n    @Insert\r\n    fun updateMood(myMoodDao: my_moods)\r\n    @Query(\"SELECT * FROM mood_table\")\r\n    fun getEntries(): Flow<List<my_moods>>\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/reflect_database/mood_dao.kt b/app/src/main/java/reflect_database/mood_dao.kt
+--- a/app/src/main/java/reflect_database/mood_dao.kt	(revision 3e3311e4a7c7925b696a645dc8f17df9c9acd63c)
++++ b/app/src/main/java/reflect_database/mood_dao.kt	(date 1638480610688)
+@@ -3,6 +3,7 @@
+ import androidx.room.Dao
+ import androidx.room.Insert
+ import androidx.room.Query
++import androidx.room.Transaction
+ import kotlinx.coroutines.flow.Flow
+ 
+ @Dao
+@@ -10,5 +11,12 @@
+     @Insert
+     fun updateMood(myMoodDao: my_moods)
+     @Query("SELECT * FROM mood_table")
+-    fun getEntries(): Flow<List<my_moods>>
++    fun getMoods(): Flow<List<my_moods>>
++    @Transaction
++    @Query("Select * from mood_table where mood_name= :mood_name")
++    fun getMoodsWithEntries(mood_name: String): List<fullEntry>
++    @Insert
++    suspend fun insertEntry (entry:my_entry)
++
++
+ }
+\ No newline at end of file
+Index: app/src/main/java/reflect_database/mood_entity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package reflect_database\r\n\r\nimport androidx.room.ColumnInfo\r\nimport androidx.room.Entity\r\nimport androidx.room.PrimaryKey\r\n\r\n@Entity(tableName = \"mood_table\")\r\ndata class my_moods(\r\n    @PrimaryKey val mood_id: Int,\r\n    @ColumnInfo(name = \"mood_name\") val mood_name: String,\r\n    @ColumnInfo(name = \"hue_val\") val hue_val: Double,\r\n    @ColumnInfo(name = \"saturation_val\") val saturation_val: Double,\r\n    @ColumnInfo(name = \"lightness_val\") val lightness_val: Double\r\n)\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/reflect_database/mood_entity.kt b/app/src/main/java/reflect_database/mood_entity.kt
+--- a/app/src/main/java/reflect_database/mood_entity.kt	(revision 3e3311e4a7c7925b696a645dc8f17df9c9acd63c)
++++ b/app/src/main/java/reflect_database/mood_entity.kt	(date 1638480610669)
+@@ -6,8 +6,9 @@
+ 
+ @Entity(tableName = "mood_table")
+ data class my_moods(
+-    @PrimaryKey val mood_id: Int,
+-    @ColumnInfo(name = "mood_name") val mood_name: String,
++//    @PrimaryKey val mood_id: Int,
++//    @ColumnInfo(name = "mood_name") val mood_name: String,
++    @PrimaryKey val mood_name: String,
+     @ColumnInfo(name = "hue_val") val hue_val: Double,
+     @ColumnInfo(name = "saturation_val") val saturation_val: Double,
+     @ColumnInfo(name = "lightness_val") val lightness_val: Double
+Index: app/src/main/java/reflect_database/reflect_entry.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package reflect_database\r\n\r\nimport androidx.room.ColumnInfo\r\nimport androidx.room.Entity\r\nimport androidx.room.ForeignKey\r\nimport androidx.room.PrimaryKey\r\nimport java.util.Date\r\n\r\n\r\n@Entity(\r\n    tableName = \"journal_table\",\r\n    foreignKeys = [\r\n        ForeignKey(entity = my_moods::class,\r\n            parentColumns = [\"mood_id\"],\r\n            childColumns = [\"journal_mood\"])\r\n    ]\r\n)\r\ndata class my_entry(\r\n//    @PrimaryKey val journal_entry: String\r\n    @PrimaryKey(autoGenerate = true) val journal_id: Int,\r\n//    Time of entry\r\n    @ColumnInfo(name = \"journal_time\") val journal_time: Long,\r\n//    Entry\r\n    @ColumnInfo(name = \"journal_entry\") val journal_entry: String,\r\n//    Mood Score\r\n    @ColumnInfo(name = \"journal_mood\") val journal_mood: Int\r\n)
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/reflect_database/reflect_entry.kt b/app/src/main/java/reflect_database/reflect_entry.kt
+--- a/app/src/main/java/reflect_database/reflect_entry.kt	(revision 3e3311e4a7c7925b696a645dc8f17df9c9acd63c)
++++ b/app/src/main/java/reflect_database/reflect_entry.kt	(date 1638482285184)
+@@ -9,19 +9,19 @@
+ 
+ @Entity(
+     tableName = "journal_table",
+-    foreignKeys = [
+-        ForeignKey(entity = my_moods::class,
+-            parentColumns = ["mood_id"],
+-            childColumns = ["journal_mood"])
+-    ]
++//    foreignKeys = [
++//        ForeignKey(entity = my_moods::class,
++//            parentColumns = ["mood_name"],
++//            childColumns = ["mood_name"])
++//    ]
+ )
+ data class my_entry(
+ //    @PrimaryKey val journal_entry: String
+     @PrimaryKey(autoGenerate = true) val journal_id: Int,
+ //    Time of entry
+-    @ColumnInfo(name = "journal_time") val journal_time: Long,
++    @ColumnInfo(name = "journal_time") val journal_time: String,
+ //    Entry
+     @ColumnInfo(name = "journal_entry") val journal_entry: String,
+ //    Mood Score
+-    @ColumnInfo(name = "journal_mood") val journal_mood: Int
++    @ColumnInfo(name = "mood_name") val mood_name: String
+ )
+\ No newline at end of file
+Index: app/src/main/java/reflect_database/fullEntry.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>//package reflect_database\r\n//\r\n//import androidx.room.Embedded\r\n//import androidx.room.Relation\r\n//\r\n//data class fullEntry(\r\n////1 to N relationship\r\n//    @Embedded\r\n//    val entry: my_entry,\r\n//\r\n//    @Relation(parentColumn = \"mood_id\",entityColumn = \"journal_mood\")\r\n//\r\n//)\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/reflect_database/fullEntry.kt b/app/src/main/java/reflect_database/fullEntry.kt
+--- a/app/src/main/java/reflect_database/fullEntry.kt	(revision 3e3311e4a7c7925b696a645dc8f17df9c9acd63c)
++++ b/app/src/main/java/reflect_database/fullEntry.kt	(date 1638480610681)
+@@ -1,13 +1,16 @@
+-//package reflect_database
+-//
+-//import androidx.room.Embedded
+-//import androidx.room.Relation
+-//
+-//data class fullEntry(
+-////1 to N relationship
+-//    @Embedded
+-//    val entry: my_entry,
+-//
+-//    @Relation(parentColumn = "mood_id",entityColumn = "journal_mood")
+-//
+-//)
++package reflect_database
++
++import androidx.room.Embedded
++import androidx.room.Relation
++
++data class fullEntry(
++//1 to N relationship
++    @Embedded val mood: my_moods,
++
++    @Relation(
++        parentColumn = "mood_name",
++        entityColumn = "mood_name"
++    )
++    val entry: List<my_entry>
++
++)
