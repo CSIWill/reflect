@@ -6,9 +6,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "mood_table")
 data class my_moods(
-    @PrimaryKey(autoGenerate = true) val id: Int,
-    @ColumnInfo(name = "mood") val mood: String,
-    @ColumnInfo(name = "hue") val hue: Int,
-    @ColumnInfo(name = "saturation") val saturation: Float,
-    @ColumnInfo(name = "lightness") val lightness: Float
+    @PrimaryKey val mood_id: Int,
+    @ColumnInfo(name = "mood_name") val mood_name: String,
+    @ColumnInfo(name = "hue_val") val hue_val: Double,
+    @ColumnInfo(name = "saturation_val") val saturation_val: Double,
+    @ColumnInfo(name = "lightness_val") val lightness_val: Double
 )

@@ -15,10 +15,11 @@ import reflect_database.my_entry
 import java.util.Date
 
 class MainActivity : AppCompatActivity() {
-//    val vm:EntryViewModel by viewModels {EntryViewModelFactory()}
+//    val vm:EntryViewModel by viewModels {EntryViewModelFactory((application as W)}
     val vm:EntryViewModel by viewModels {EntryViewModelFactory(initDb())}
 
     private fun initDb(): EntryRepository {
+
         val db = my_database.getDatabase(this)
         return EntryRepository(db.reflect_dao())
     }
@@ -49,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                 val currentTime:Date = Date()
 
 
-                vm.addEntry(my_entry(0,currentTime.getTime(),text.toString()))
+                vm.addEntry(my_entry(0,currentTime.getTime(),text.toString(),1))
 
                 Toast.makeText(this, text, Toast.LENGTH_LONG).show() // Shouts text - Can remove when database works
             }
