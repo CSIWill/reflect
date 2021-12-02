@@ -20,9 +20,9 @@ class ReviewScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.review_entry)
 
-        val recyclerView = findViewById<ListView>(R.id.main_listView)
+        //val recyclerView = findViewById<ListView>(R.id.main_listView)
         val adapter = EntryAdapter()
-        //recyclerView.adapter = adapter
+        recyclerview.adapter = adapter
         recyclerview.layoutManager = LinearLayoutManager(this)
 
 
