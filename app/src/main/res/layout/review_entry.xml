@@ -8,8 +8,8 @@
     android:background="@drawable/background1">
 <!--    tools:showIn="@layout/activity_main">-->
 
-    <ListView
-        android:id="@+id/listView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/main_listView"
         android:layout_width="361dp"
         android:layout_height="515dp"
         android:background="#66FFFF42"
@@ -20,13 +20,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.662" />
+        app:layout_constraintVertical_bias="0.662"
+        tools:listitem="@layout/entry_item"/>
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="349dp"
         android:layout_height="126dp"
-        app:layout_constraintBottom_toTopOf="@+id/listView"
+        app:layout_constraintBottom_toTopOf="@+id/main_listView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"

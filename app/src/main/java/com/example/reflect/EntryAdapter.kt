@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import reflect_database.my_dao
+//import reflect_database.my_dao
 import reflect_database.my_entry
 
 //private val entries: List<my_dao>
@@ -18,15 +18,15 @@ class EntryAdapter: ListAdapter<my_entry, EntryAdapter.EntryViewHolder> (Entry_C
     }
 
     override fun onBindViewHolder(holder: EntryViewHolder, position: Int) {
-//        val current = getItem(position)
-//        holder.bind(current.word)
+        val current = getItem(position)
+        holder.bind(current.journal_entry)
     }
 
     class EntryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val entryItemView: TextView = itemView.findViewById(R.id.listView)
+        private val entryView: TextView = itemView.findViewById(R.id.view_entry)
 
         fun bind(text: String?) {
-            entryItemView.text = text
+            entryView.text = text
         }
 
         companion object {

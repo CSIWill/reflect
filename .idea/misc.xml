@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Dondre/AndroidStudioProjects/reflect-test/app/src/main/res/drawable/color_lens_24.xml" value="0.1" />
+        <entry key="..\:/Users/Dondre/AndroidStudioProjects/reflect-test/app/src/main/res/layout/activity_main.xml" value="0.12335359675785208" />
+        <entry key="..\:/Users/Dondre/AndroidStudioProjects/reflect-test/app/src/main/res/layout/content_main.xml" value="0.12335359675785208" />
+        <entry key="..\:/Users/Dondre/AndroidStudioProjects/reflect-test/app/src/main/res/layout/entry_item.xml" value="0.12335359675785208" />
+        <entry key="..\:/Users/Dondre/AndroidStudioProjects/reflect-test/app/src/main/res/layout/review_entry.xml" value="0.1" />
         <entry key="..\:/Users/Tim/AndroidStudioProjects/reflect/app/src/main/res/layout/activity_home_screen.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/Tim/AndroidStudioProjects/reflect/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/Tim/AndroidStudioProjects/reflect/app/src/main/res/layout/activity_mood.xml" value="0.2957427536231884" />
@@ -11,8 +16,6 @@
         <entry key="..\:/Users/Tim/AndroidStudioProjects/reflect2/app/src/main/res/layout/activity_main.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/Tim/AndroidStudioProjects/reflect2/app/src/main/res/layout/activity_mood.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/Tim/AndroidStudioProjects/reflect2/app/src/main/res/layout/activity_settings.xml" value="0.21603260869565216" />
-        <entry key="..\:/Users/onius/AndroidStudioProjects/reflect/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/onius/AndroidStudioProjects/reflect/app/src/main/res/layout/review_entry.xml" value="0.33125" />
       </map>
     </option>
   </component>
