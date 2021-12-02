@@ -1,5 +1,6 @@
 package com.example.reflect
 
+import android.icu.text.SimpleDateFormat
 import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -49,8 +50,12 @@ class MainActivity : AppCompatActivity() {
 
                 val currentTime:Date = Date()
 
+                val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy kk:mm")
+                val dateString = simpleDateFormat.format(currentTime.getTime())
 
-                vm.addEntry(my_entry(0,currentTime.getTime(),text.toString(),1))
+
+
+                vm.addEntry(my_entry(0,dateString,text.toString(),1))
 
                 Toast.makeText(this, text, Toast.LENGTH_LONG).show() // Shouts text - Can remove when database works
             }
