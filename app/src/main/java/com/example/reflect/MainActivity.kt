@@ -1,5 +1,6 @@
 package com.example.reflect
 
+import android.icu.text.SimpleDateFormat
 import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -54,7 +55,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-                vm.addEntry(my_entry(0,dateString,text.toString(),1))
+                vm.addEntry(my_entry(0,dateString,text.toString(),"Grouchy"))
 
                 Toast.makeText(this, text, Toast.LENGTH_LONG).show() // Shouts text - Can remove when database works
             }
