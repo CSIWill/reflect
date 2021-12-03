@@ -1,5 +1,6 @@
 package com.example.reflect
 
+import android.content.Intent
 import android.icu.text.SimpleDateFormat
 import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
@@ -68,6 +69,7 @@ class MainActivity : AppCompatActivity() {
 //                vm.addEntry(my_entry(0,dateString,text.toString(),"Grouchy"))
 
                 Toast.makeText(this, text, Toast.LENGTH_LONG).show() // Shouts text - Can remove when database works
+                startActivity(Intent(this@MainActivity, homeScreen::class.java))
             }
             mAlertDialog.setNegativeButton("Go Back") { dialog, id ->
                 dialog.dismiss()
