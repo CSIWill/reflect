@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
 
                 val currentTime:Date = Date()
 
-                val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy kk:mm")
+                val simpleDateFormat = SimpleDateFormat("MMMM/dd/yyyy kk:mm")
                 val dateString = simpleDateFormat.format(currentTime.getTime())
 
                 entryViewModel.addEntry(my_entry(0,dateString,text.toString(),"Grouchy"))
