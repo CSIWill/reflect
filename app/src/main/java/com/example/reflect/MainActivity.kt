@@ -18,27 +18,18 @@ import kotlinx.coroutines.*
 import reflect_database.my_database
 import reflect_database.my_entry
 import java.util.Date
+import com.example.reflect.Mood
+import kotlinx.android.synthetic.main.activity_mood.*
 
 class MainActivity : AppCompatActivity() {
-//    val vm:EntryViewModel by viewModels {EntryViewModelFactory(initDb())}
-//    private fun initDb(): EntryRepository {
-//
-//        val db = my_database.getDatabase(this)
-//        return EntryRepository(db.reflect_dao())
-//    }
+
     private val entryViewModel: EntryViewModel by viewModels {
         EntryViewModelFactory((application as ReflectApplication).repository)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        val adapter = EntryAdapter()
-//        recyclerview.adapter = adapter
-//        recyclerview.layoutManager = LinearLayoutManager(this)
-//
-//        entryViewModel.allEntries.observe(this, Observer { entries ->
-//            entries?.let{adapter.submitList(it)
-//            }
+
 
         val showButton = findViewById<Button>(R.id.showInput)
         val editText = findViewById<EditText>(R.id.editText)
@@ -63,10 +54,10 @@ class MainActivity : AppCompatActivity() {
 
                 val simpleDateFormat = SimpleDateFormat("MMMM/dd/yyyy kk:mm")
                 val dateString = simpleDateFormat.format(currentTime.getTime())
+                val mood_string = moodString
 
-                entryViewModel.addEntry(my_entry(0,dateString,text.toString(),"Grouchy"))
+                entryViewModel.addEntry(my_entry(0,dateString,text.toString(),moodString))
 
-//                vm.addEntry(my_entry(0,dateString,text.toString(),"Grouchy"))
 
                 Toast.makeText(this, text, Toast.LENGTH_LONG).show() // Shouts text - Can remove when database works
                 startActivity(Intent(this@MainActivity, homeScreen::class.java))

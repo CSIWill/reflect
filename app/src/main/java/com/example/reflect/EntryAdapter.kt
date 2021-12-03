@@ -9,10 +9,24 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.reflect.EntryAdapter.EntryViewHolder
 import reflect_database.my_entry
+import com.example.reflect.databinding.EntryItemBinding
 
-//class EntryAdapter: ListAdapter<my_entry, EntryViewHolder> (Entry_COMPARATOR)
-class EntryAdapter: ListAdapter<my_entry, EntryViewHolder> (Entry_COMPARATOR) {
+class EntryAdapter: ListAdapter<my_entry, EntryViewHolder> (DiffCallback) {
+//class EntryAdapter(private val onItemClicked: (my_entry) -> Unit
+//) : ListAdapter<my_entry, EntryViewHolder> (DiffCallback) {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EntryViewHolder {
+//        val viewHolder = EntryViewHolder(
+//            EntryItemBinding.inflate(
+//                LayoutInflater.from(parent.context),
+//                parent,
+//                false
+//            )
+//        )
+//        viewHolder.itemView.setOnClickListener {
+//            val position = viewHolder.adapterPosition
+//            onItemClicked(getItem(position))
+//        }
         return EntryViewHolder.create(parent)
     }
 
@@ -38,7 +52,7 @@ class EntryAdapter: ListAdapter<my_entry, EntryViewHolder> (Entry_COMPARATOR) {
     }
 
     companion object {
-        private val Entry_COMPARATOR = object : DiffUtil.ItemCallback<my_entry>() {
+        private val DiffCallback = object : DiffUtil.ItemCallback<my_entry>() {
             override fun areItemsTheSame(oldItem: my_entry, newItem: my_entry): Boolean {
                 return oldItem === newItem
             }
