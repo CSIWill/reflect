@@ -9,26 +9,38 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.coroutines.*
 import reflect_database.my_database
 import reflect_database.my_entry
 import java.util.Date
 
 class MainActivity : AppCompatActivity() {
-    val vm:EntryViewModel by viewModels {EntryViewModelFactory(initDb())}
-    private fun initDb(): EntryRepository {
-
-        val db = my_database.getDatabase(this)
-        return EntryRepository(db.reflect_dao())
+//    val vm:EntryViewModel by viewModels {EntryViewModelFactory(initDb())}
+//    private fun initDb(): EntryRepository {
+//
+//        val db = my_database.getDatabase(this)
+//        return EntryRepository(db.reflect_dao())
+//    }
+    private val entryViewModel: EntryViewModel by viewModels {
+        EntryViewModelFactory((application as ReflectApplication).repository)
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+//        val adapter = EntryAdapter()
+//        recyclerview.adapter = adapter
+//        recyclerview.layoutManager = LinearLayoutManager(this)
+//
+//        entryViewModel.allEntries.observe(this, Observer { entries ->
+//            entries?.let{adapter.submitList(it)
+//            }
 
-       val showButton = findViewById<Button>(R.id.showInput)
-       val editText = findViewById<EditText>(R.id.editText)
+        val showButton = findViewById<Button>(R.id.showInput)
+        val editText = findViewById<EditText>(R.id.editText)
 
 //ALERT BUTTON
         val mAlertDialogBtn = findViewById<Button>(R.id.showInput)
@@ -51,24 +63,16 @@ class MainActivity : AppCompatActivity() {
                 val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy kk:mm")
                 val dateString = simpleDateFormat.format(currentTime.getTime())
 
+                entryViewModel.addEntry(my_entry(0,dateString,text.toString(),"Grouchy"))
 
-
-                vm.addEntry(my_entry(0,dateString,text.toString(),"Grouchy"))
+//                vm.addEntry(my_entry(0,dateString,text.toString(),"Grouchy"))
 
                 Toast.makeText(this, text, Toast.LENGTH_LONG).show() // Shouts text - Can remove when database works
             }
-
-            mAlertDialog.setNegativeButton("Go Back"){dialog, id->
+            mAlertDialog.setNegativeButton("Go Back") { dialog, id ->
                 dialog.dismiss()
-
-        }
+            }
         mAlertDialog.show()
         }
-
-
-
     }
-
-
-
 }

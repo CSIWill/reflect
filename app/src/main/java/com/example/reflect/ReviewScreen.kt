@@ -3,7 +3,9 @@ package com.example.reflect
 import android.content.Intent
 import android.os.Bundle
 import android.widget.*
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.reflect.EntryRepository
@@ -16,15 +18,25 @@ import reflect_database.my_database
 import reflect_database.my_entry
 
 class ReviewScreen : AppCompatActivity() {
+    private val entryViewModel: EntryViewModel by viewModels {
+        EntryViewModelFactory((application as ReflectApplication).repository)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.review_entry)
 
-        //val recyclerView = findViewById<ListView>(R.id.main_listView)
+        val recyclerView = findViewById<RecyclerView>(R.id.main_listView)
         val adapter = EntryAdapter()
-        recyclerview.adapter = adapter
-        recyclerview.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
+        entryViewModel.allEntries.observe(this, Observer { entries ->
+            entries?.let{adapter.submitList(it)
+
+
+        }
+
+            })
 
 
 //        val entry = arrayOf("Test1", "Test2", "test3")
@@ -39,7 +51,6 @@ class ReviewScreen : AppCompatActivity() {
 //            Toast.makeText(this, "Testing lmao " + entry[i],Toast.LENGTH_LONG)
 //                .show()
 //        }
-
 
         }
     }

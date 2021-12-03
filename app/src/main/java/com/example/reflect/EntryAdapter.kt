@@ -7,19 +7,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-//import reflect_database.my_dao
+import com.example.reflect.EntryAdapter.EntryViewHolder
 import reflect_database.my_entry
 
-//private val entries: List<my_dao>
-
-class EntryAdapter: ListAdapter<my_entry, EntryAdapter.EntryViewHolder> (Entry_COMPARATOR){
+//class EntryAdapter: ListAdapter<my_entry, EntryViewHolder> (Entry_COMPARATOR)
+class EntryAdapter: ListAdapter<my_entry, EntryViewHolder> (Entry_COMPARATOR) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EntryViewHolder {
         return EntryViewHolder.create(parent)
     }
 
     override fun onBindViewHolder(holder: EntryViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.journal_entry)
+        holder.bind(current.journal_time + " " + current.journal_entry + " " + current.mood_name)
     }
 
     class EntryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -32,7 +31,8 @@ class EntryAdapter: ListAdapter<my_entry, EntryAdapter.EntryViewHolder> (Entry_C
         companion object {
             fun create(parent: ViewGroup): EntryViewHolder {
                 val view: View = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.review_entry, parent, false)
+                    .inflate(R.layout.entry_item, parent, false)
+//                    .inflate(R.layout.review_entry, parent, false)
                 return EntryViewHolder(view)
             }
         }
