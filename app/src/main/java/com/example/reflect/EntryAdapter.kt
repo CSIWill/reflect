@@ -18,7 +18,7 @@ class EntryAdapter: ListAdapter<my_entry, EntryViewHolder> (Entry_COMPARATOR) {
 
     override fun onBindViewHolder(holder: EntryViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.journal_time + " " + current.journal_entry + " " + current.mood_name)
+        holder.bind(current.journal_time + " " + current.mood_name + "\n" + current.journal_entry )
     }
 
     class EntryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -32,7 +32,6 @@ class EntryAdapter: ListAdapter<my_entry, EntryViewHolder> (Entry_COMPARATOR) {
             fun create(parent: ViewGroup): EntryViewHolder {
                 val view: View = LayoutInflater.from(parent.context)
                     .inflate(R.layout.entry_item, parent, false)
-//                    .inflate(R.layout.review_entry, parent, false)
                 return EntryViewHolder(view)
             }
         }

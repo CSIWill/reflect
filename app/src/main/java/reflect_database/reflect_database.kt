@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import net.sqlcipher.database.*
 import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
 
@@ -19,14 +20,14 @@ abstract class my_database: RoomDatabase() {
         private var INSTANCE: my_database? = null
         fun getDatabase(context: Context): my_database {
             return INSTANCE ?: synchronized(this) {
-//                val passphrase = SQLiteDatabase.getBytes("Passphras3".toCharArray())
-//                val factory = SupportFactory(passphrase)
+                val passphrase = SQLiteDatabase.getBytes("Passphras3".toCharArray())
+                val factory = SupportFactory(passphrase)
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     my_database::class.java,
                     "reflect_database")
 
-//                    .openHelperFactory(factory)
+                    .openHelperFactory(factory)
 //                    .fallbackToDestructiveMigration()
 
                     .addCallback(object:Callback() {
