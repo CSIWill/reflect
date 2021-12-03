@@ -6,3 +6,7 @@ https://github.com/google-developer-training/android-basics-kotlin-bus-schedule-
 
 https://github.com/android/sunflower
 
+
+Zetetic LLC:
+
+https://github.com/sqlcipher/sqlcipher
