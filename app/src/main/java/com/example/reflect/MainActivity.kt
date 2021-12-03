@@ -16,9 +16,7 @@ import reflect_database.my_entry
 import java.util.Date
 
 class MainActivity : AppCompatActivity() {
-//    val vm:EntryViewModel by viewModels {EntryViewModelFactory((application as W)}
     val vm:EntryViewModel by viewModels {EntryViewModelFactory(initDb())}
-
     private fun initDb(): EntryRepository {
 
         val db = my_database.getDatabase(this)

@@ -55,6 +55,10 @@ dependencies {
     implementation "androidx.fragment:fragment-ktx:1.3.6"
     implementation "androidx.activity:activity-ktx:1.4.0"
 
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutines"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutines"
+
 //    Room Database
     def room_version = "2.3.0"
 
@@ -92,5 +96,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-common-java8:2.4.0"
     //Annotation processor
     kapt "androidx.lifecycle:lifecycle-compiler:2.2.0"
+
+    // UI
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
+    implementation "com.google.android.material:material:$rootProject.materialVersion"
 
 }

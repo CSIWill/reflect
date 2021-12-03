@@ -1,12 +1,11 @@
 package com.example.reflect
 
-import android.app.Application
-import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 import reflect_database.my_entry
-//import reflect_database.reflect_repository
-
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.runBlocking
 
