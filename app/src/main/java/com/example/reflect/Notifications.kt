@@ -15,10 +15,11 @@ import androidx.core.app.NotificationManagerCompat
 import kotlinx.android.synthetic.main.activity_notifications.*
 import java.util.concurrent.atomic.AtomicInteger
 
+
 class Notifications : AppCompatActivity() {
     val CHANNEL_ID = "Journal"
     val CHANNEL_ID2 = "Mood"
-    //val notificationJournalId = 101
+    val notificationJournalId = 101
     //  val notificationMoodId = 202
 
     class NotificationID {
